@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+import store from './store';
+import { Provider } from 'react-redux';
+
 import './index.css';
 import App from './App';
 import Target from './Target';
 import TestCanvas from './page/TestCanvas'
-import DrawImg from  './page/DrawImg'
-import LinkTo from  './page/linkto'
-import Group from  './page/Group'
-import BufAttribute from  './page/BufAttribute'
+import DrawImg from './page/DrawImg'
+import LinkTo from './page/linkto'
+import Group from './page/Group'
+import BufAttribute from './page/BufAttribute'
 import reportWebVitals from './reportWebVitals';
 
 
@@ -29,7 +33,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   // <React.StrictMode>
+  <Provider store={store}>
     <ToDoList />
+  </Provider>
   // </React.StrictMode>
 );
 

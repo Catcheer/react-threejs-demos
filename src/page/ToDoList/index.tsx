@@ -1,45 +1,42 @@
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect } from "react";
 
 import { Button,Checkbox  } from "antd";
+import { useSelector, 
+    useDispatch 
+} from 'react-redux';
+import { addTask, removeTask } from '../../features/todoState/list';
 
 
 
 
 
 const  ToDoList:React.FC=() =>{
+  const list = useSelector((state:any) => state.todos.value);
+  const dispatch = useDispatch();
 
-    let initList:Array<ToDoList.ITodo> = [
-        {
-            id:1,
-            title:'语文作业',
-            done:false
-        },
-        {    id:2,
-            title:'数学作业',
-            done:false
-        }
-    ]
-
-    let  [list,setList] = useState(initList)
+    
 
     const handleChangeTaskStatus=(item:ToDoList.ITodo)=>{
             console.log(item);
-            let newItem = {...item,done:!item.done}
-            setList(list.map((item,i)=>{
-                if(item.id===newItem.id){
-                    return newItem
-                }
-                return item
-            }))
+            // let newItem = {...item,done:!item.done}
+           
     }
+
+    const addNewTask =()=>{
+        dispatch(addTask({
+           
+        }))
+    }
+   
 
     useLayoutEffect(()=>{
         console.log(list);
     },[list])
     return (
         <div>
+          
             <ul>
-                {list.map((item,index)=>{
+                {list.map((item:any,index:number)=>{
                     return <li key={index}>
                         <span>{item.title}</span>
                         <span><Checkbox checked={item.done} onChange={()=>{handleChangeTaskStatus(item)}} /> </span>
@@ -47,7 +44,8 @@ const  ToDoList:React.FC=() =>{
                 })}
             </ul>
             <div></div>
-            <Button type="primary">addTask</Button>
+            <Button type="primary" onClick={addNewTask}>addTask</Button>
+           
         </div>
     )
 }
