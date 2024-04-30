@@ -11,7 +11,7 @@ import BufAttribute from  './page/BufAttribute'
 import reportWebVitals from './reportWebVitals';
 
 
-// import './iosbridge'
+
 
 
 import VConsole from 'vconsole';

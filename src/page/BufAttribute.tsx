@@ -11,7 +11,7 @@ function BufAttribute() {
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0x000000);
         const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-        camera.position.set(0.5, 1, 2)
+        camera.position.set(0, 0, 2)
         camera.lookAt(0, 0, 0);
 
         // const arr = new Float32Array([
@@ -37,9 +37,6 @@ function BufAttribute() {
             0.5, -0.5, 0, //顶点2坐标
             0.5, 0.5, 0, //顶点3坐标
             -0.5, 0.5, 0
-
-
-
         ])
 
         const index = new Uint16Array([
@@ -63,8 +60,17 @@ function BufAttribute() {
         });
 
         const mesh = new THREE.Mesh(geometry, material);
-
+        const mesh1 = mesh.clone()
+        mesh1.rotateY(-Math.PI /2)
+        
+        const material1 = new THREE.MeshBasicMaterial({
+            color: 0xff0000,
+            side: THREE.DoubleSide
+            // wireframe:true
+        });
+        mesh1.material = material1;
         scene.add(mesh);
+        scene.add(mesh1);
 
         // // 点渲染模式
         // const material = new THREE.PointsMaterial({
@@ -88,17 +94,40 @@ function BufAttribute() {
         function render() {
             renderer.render(scene, camera);
         }
-        render()
-
+        
         const controls = new OrbitControls(camera, renderer.domElement);
 
 
         controls.addEventListener('change', (res) => {
             console.log(res)
-
             renderer.render(scene, camera)
 
         })
+
+        // let i =0;
+        let cancelFlag:number = 0
+        let isAniing:boolean = true
+        function ani(){
+            mesh.rotation.y +=  Math.PI/60;
+            mesh1.rotation.y +=  Math.PI/60;
+            render()
+            cancelFlag=  requestAnimationFrame(ani)
+        }
+        ani()
+
+
+
+        document.body.addEventListener('click',function(){
+            if(isAniing){
+                cancelAnimationFrame(cancelFlag)
+                isAniing=false
+            }else{
+                ani()
+                isAniing=true
+            }
+           
+        })
+
     }, [])
 
 
