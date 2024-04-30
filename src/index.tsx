@@ -11,6 +11,8 @@ import BufAttribute from  './page/BufAttribute'
 import reportWebVitals from './reportWebVitals';
 
 
+import ToDoList from './page/ToDoList';
+
 
 
 
@@ -27,7 +29,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   // <React.StrictMode>
-    <BufAttribute />
+    <ToDoList />
   // </React.StrictMode>
 );
 

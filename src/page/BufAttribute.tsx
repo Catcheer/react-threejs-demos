@@ -5,7 +5,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 function BufAttribute() {
 
-    useLayoutEffect(() => {
+    useLayoutEffect( () => {
         const canvas = document.getElementById('BufCanvas') as HTMLCanvasElement;
         const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
         const scene = new THREE.Scene();
@@ -61,10 +61,16 @@ function BufAttribute() {
 
         const mesh = new THREE.Mesh(geometry, material);
         const mesh1 = mesh.clone()
-        mesh1.rotateY(-Math.PI /2)
-        
+        mesh1.rotateY(-Math.PI / 2)
+
+       
+       
+
+        const texture = addTextture()
+
         const material1 = new THREE.MeshBasicMaterial({
             color: 0xff0000,
+            // map:texture,
             side: THREE.DoubleSide
             // wireframe:true
         });
@@ -94,7 +100,7 @@ function BufAttribute() {
         function render() {
             renderer.render(scene, camera);
         }
-        
+
         const controls = new OrbitControls(camera, renderer.domElement);
 
 
@@ -105,32 +111,40 @@ function BufAttribute() {
         })
 
         // let i =0;
-        let cancelFlag:number = 0
-        let isAniing:boolean = true
-        function ani(){
-            mesh.rotation.y +=  Math.PI/60;
-            mesh1.rotation.y +=  Math.PI/60;
+        let cancelFlag: number = 0
+        let isAniing: boolean = true
+        function ani() {
+            mesh.rotation.y += Math.PI / 60;
+            mesh1.rotation.y += Math.PI / 60;
             render()
-            cancelFlag=  requestAnimationFrame(ani)
+            cancelFlag = requestAnimationFrame(ani)
         }
         ani()
 
 
 
-        document.body.addEventListener('click',function(){
-            if(isAniing){
+        document.body.addEventListener('click', function () {
+            if (isAniing) {
                 cancelAnimationFrame(cancelFlag)
-                isAniing=false
-            }else{
+                isAniing = false
+            } else {
                 ani()
-                isAniing=true
+                isAniing = true
             }
-           
+
         })
 
     }, [])
 
-
+    const  addTextture = ()=>{
+        return new Promise((resolve,reject)=>{
+            const texLoader = new THREE.TextureLoader();
+            // .load()方法加载图像，返回一个纹理对象Texture
+             texLoader.load('/southeast.jpg',textture=>{
+                resolve(textture)
+             })
+        })
+    }
 
     return (
         <div>
