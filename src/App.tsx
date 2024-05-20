@@ -86,7 +86,9 @@ function App() {
   })
 
   
-  gui.add(directionalLight, 'intensity', 0, 5.0);
+  gui.add(directionalLight, 'intensity', 0, 5.0).onChange(()=>{
+    renderer.render(scene,camera)
+  })
 
   const ambientLight = new THREE.AmbientLight(0xffffff,1)
   const light_rightBottom = new THREE.PointLight('#ff0000',500,300)
@@ -105,7 +107,7 @@ function App() {
 
 
   controls.addEventListener('change',(res)=>{
-    console.log(res)
+    // console.log(res)
     stats.begin();
     renderer.render(scene,camera)
     stats.end();

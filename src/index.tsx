@@ -13,6 +13,7 @@ import LinkTo from './page/linkto'
 import Group from './page/Group'
 import BufAttribute from './page/BufAttribute'
 import reportWebVitals from './reportWebVitals';
+import Tween from './page/Tween';
 
 
 import ToDoList from './page/ToDoList';
@@ -33,10 +34,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   // <React.StrictMode>
-  <Provider store={store}>
-    <ToDoList />
-  </Provider>
+  // <Provider store={store}>
+  //   <ToDoList />
+  // </Provider>
   // </React.StrictMode>
+  <Tween />
 );
 
 // If you want to start measuring performance in your app, pass a function
