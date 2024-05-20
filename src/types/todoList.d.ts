@@ -1,4 +1,4 @@
-declare namespace ToDoList {
+declare namespace ToDoListType {
     interface ITodo {
         id: number;
         title: string;
