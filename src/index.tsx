@@ -14,6 +14,8 @@ import Group from './page/Group'
 import BufAttribute from './page/BufAttribute'
 import reportWebVitals from './reportWebVitals';
 import Tween from './page/Tween';
+import Raycaster from './page/Raycaster';
+import AxisTransform from './page/AxisTransform';
 
 
 import ToDoList from './page/ToDoList';
@@ -38,7 +40,7 @@ root.render(
   //   <ToDoList />
   // </Provider>
   // </React.StrictMode>
-  <Tween />
+  <AxisTransform />
 );
 
 // If you want to start measuring performance in your app, pass a function
