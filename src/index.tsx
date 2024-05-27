@@ -14,7 +14,10 @@ import Group from './page/Group'
 import BufAttribute from './page/BufAttribute'
 import reportWebVitals from './reportWebVitals';
 import Tween from './page/Tween';
+import Css2D from './page/Css2D';
 import Raycaster from './page/Raycaster';
+import Css3D from './page/Css3D';
+import Sprite from './page/Sprite';
 import AxisTransform from './page/AxisTransform';
 
 
@@ -40,7 +43,7 @@ root.render(
   //   <ToDoList />
   // </Provider>
   // </React.StrictMode>
-  <AxisTransform />
+  <Sprite />
 );
 
 // If you want to start measuring performance in your app, pass a function
