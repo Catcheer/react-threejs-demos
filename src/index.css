@@ -19,3 +19,23 @@ code {
   position: absolute;
 }
 
+
+.layout_wrap{
+  display: flex;
+}
+
+.left_nav{
+  display: flex;
+  flex-direction: column;
+  /* width: 300px; */
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+}
+
+.left_nav >a{
+  margin: 10px;
+}
+.main_conten{
+  flex: 1;
+  height: 100vh;
+}

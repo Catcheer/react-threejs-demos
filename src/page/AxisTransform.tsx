@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-
+import env from '../env.js';
 
 
 
@@ -9,38 +9,38 @@ import TWEEN from '@tweenjs/tween.js';
 
 import useBasic from '../hooks/useBasic';
 
-function AxisTransform(){
+function AxisTransform() {
     let { scene, camera, renderer } = useBasic()
 
     useLayoutEffect(() => {
-       
-       
-        const geometry = new THREE.BoxGeometry( 10, 10, 10 );
-
-        const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-        const cube = new THREE.Mesh( geometry, material );
-        scene.add( cube );
 
 
-        let axesHelper = new THREE.AxesHelper( 5 );
-        scene.add( axesHelper );
+        const geometry = new THREE.BoxGeometry(10, 10, 10);
+
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+
+        let axesHelper = new THREE.AxesHelper(5);
+        scene.add(axesHelper);
         renderer?.render(scene, camera)
 
-      
+
 
         document.querySelector('#canvas')?.appendChild(renderer?.domElement)
 
 
-        
+
         document.addEventListener('click', (e) => {
-            const winWidth = window.innerWidth
-        const winHeight = window.innerHeight
+            const winWidth = window.innerWidth-env.nav_width
+            const winHeight = window.innerHeight
             const { clientX, clientY } = e
             // console.log(clientX, clientY)
-            let posX = (clientX / winWidth) * 2 - 1
+            let posX = ((clientX-env.nav_width) / winWidth) * 2 - 1
             let posY = -(clientY / winHeight) * 2 + 1
 
-           
+
             const raycaster = new THREE.Raycaster();
             raycaster.setFromCamera(new THREE.Vector2(posX, posY), camera)
             console.log(raycaster)
@@ -52,7 +52,7 @@ function AxisTransform(){
                     x: 10,
                     y: 0,
                     z: 0
-                },2000).onUpdate((obj) => {
+                }, 2000).onUpdate((obj) => {
                     intersects[0].object.position.set(obj.x, obj.y, obj.z)
                 }).start()
                 loop();
@@ -61,19 +61,19 @@ function AxisTransform(){
         })
 
         window.onresize = function () {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
+            renderer.setSize((window.innerWidth-env.nav_width), window.innerHeight);
+            camera.aspect =( window.innerWidth-env.nav_width) / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer?.render(scene, camera)
         };
 
 
-        const   loop=()=> {
+        const loop = () => {
             console.log(1)
             TWEEN.update();
             renderer?.render(scene, camera);
             requestAnimationFrame(loop);
-          
+
         }
     }, [])
 

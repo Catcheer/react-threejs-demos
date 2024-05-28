@@ -2,7 +2,7 @@ import { useLayoutEffect } from "react";
 import * as THREE from 'three';
 import useBasic from '../hooks/useBasic';
 
-
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 function Sprite() {
     let { scene, camera, renderer } = useBasic()
@@ -17,6 +17,7 @@ function Sprite() {
         }
 
         const group = new THREE.Group();
+        let planeMeshSky :THREE.Mesh | undefined
         async function mapObj() {
             const texture: any = await loadMap('/xuehua.png')
             const spriteMaterial = new THREE.SpriteMaterial({
@@ -57,11 +58,12 @@ function Sprite() {
             function loop() {
                 // loop()两次执行时间间隔
                 const t = clock.getDelta();
+             
                 group.children.forEach(sprite => {
                     // 雨滴的y坐标每次减t*60
                     sprite.position.y -= t * 30;
-                    if (sprite.position.y < -window.innerHeight/2) {
-                        sprite.position.y = 600;
+                    if (sprite.position.y < -30) {
+                        sprite.position.y = 600 * Math.random();
                     }
                 });
                 renderer?.render(scene, camera)
@@ -91,7 +93,7 @@ function Sprite() {
         }
 
         async function sky(){
-            const plane = new THREE.PlaneGeometry(600, 200, 100, 100);
+           let  plane = new THREE.PlaneGeometry(600, 200, 100, 100);
 
             const mat:any = await loadMap('/sky2.png')
 
@@ -99,14 +101,15 @@ function Sprite() {
                 color: 0xffffff,
                 map: mat,
             })
-            const planeMesh = new THREE.Mesh(plane, planeMaterial)
-            scene?.add(planeMesh)
+             planeMeshSky = new THREE.Mesh(plane, planeMaterial)
+            scene?.add(planeMeshSky)
             // planeMesh.rotation.x = -Math.PI / 2
-            planeMesh.position.y = 60
-            planeMesh.position.z = -100
+            planeMeshSky.position.y = 60
+            planeMeshSky.position.z = -100
             
         }
-
+        const controls = new OrbitControls( camera, renderer.domElement );
+        
     }, []
     )
     return (

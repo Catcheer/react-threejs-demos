@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef } from "react";
 import * as THREE from 'three';
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
-
+import env from '../env.js';
 
 import useBasic from '../hooks/useBasic';
 import './style/tween.scss'
@@ -31,7 +31,7 @@ function Css2D() {
         cube.add(tag);
         console.log(cube)
         
-        tag.position.set(0, 10, 0);
+        tag.position.set(-6, 10, 0);
         // cube.position.set(0, -10, 0);
         // cube.rotateZ(Math.PI / 4);
         const css2Renderer = new CSS2DRenderer();
@@ -41,8 +41,15 @@ function Css2D() {
         css2Renderer.render(scene, camera);
         renderer?.render(scene, camera)
         css2Renderer.domElement.style.position = 'absolute';
+        css2Renderer.domElement.style.width= window.innerWidth - env.nav_width + 'px';
         css2Renderer.domElement.style.top = '0px';
+        css2Renderer.domElement.style.left = env.nav_width + 'px';
+        // css2Renderer.domElement.style.background = '#ff0000';
         css2Renderer.domElement.style.pointerEvents = 'none';
+
+        return () => {
+            document.body.removeChild(css2Renderer.domElement);
+        }
     }, [])
 
     // useLayoutEffect(() => {

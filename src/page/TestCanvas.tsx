@@ -12,9 +12,7 @@ function TestCanvas(){
         const ctx = myCanvas?.getContext('2d');
 
         const fileReader= new FileReader()
-        // myimg.onload = function(){
-         
-        // }
+       
 
         myFile?.addEventListener('change',()=>{
             console.log(myFile.files&& myFile.files[0])
@@ -42,53 +40,53 @@ function TestCanvas(){
            }
            
          
-            fileReader.onload=(e)=>{
-                    console.log(e.target?.result)
-                    if(e.target?.result){
-                    let str:any = e.target.result
+        //     fileReader.onload=(e)=>{
+        //             console.log(e.target?.result)
+        //             if(e.target?.result){
+        //             let str:any = e.target.result
 
-                    console.log(typeof str)
-                    //  console.log(typeof arrayBuf);
-                    //  var uint8Array:any = []
+        //             console.log(typeof str)
+        //             //  console.log(typeof arrayBuf);
+        //             //  var uint8Array:any = []
                   
 
-            const img = new Image()
-            img.src = str
-           img.decode().then(()=>{
+        //     const img = new Image()
+        //     img.src = str
+        //    img.decode().then(()=>{
            
             
-            ctx?.drawImage(img,0,0,600,600/img.width*img.height)
-           const data =  ctx?.getImageData(0,0,600,600/img.width*img.height)
-           console.log('base64----------',data)
-           })
+        //     ctx?.drawImage(img,0,0,600,600/img.width*img.height)
+        //    const data =  ctx?.getImageData(0,0,600,600/img.width*img.height)
+        //    console.log('base64----------',data)
+        //    })
 
 
 
-                    // if(arrayBuf){
-                    //     uint8Array=  new Uint8Array(arrayBuf);
-                    //     console.log(uint8Array)
+        //             // if(arrayBuf){
+        //             //     uint8Array=  new Uint8Array(arrayBuf);
+        //             //     console.log(uint8Array)
                         
-                    //     let arr = []
+        //             //     let arr = []
 
-                    //     for (let i=0;i<uint8Array.length;i++){
-                    //         arr.push(uint8Array[i])
-                    //         if((i+1)%3==0){
-                    //             arr.push(255)
-                    //         }
-                    //     }
+        //             //     for (let i=0;i<uint8Array.length;i++){
+        //             //         arr.push(uint8Array[i])
+        //             //         if((i+1)%3==0){
+        //             //             arr.push(255)
+        //             //         }
+        //             //     }
 
-                    //     console.log(arr)
-                    //     // const uint8clampedarray = new Uint8ClampedArray(arr);
-                    //     // console.log(uint8clampedarray)
+        //             //     console.log(arr)
+        //             //     // const uint8clampedarray = new Uint8ClampedArray(arr);
+        //             //     // console.log(uint8clampedarray)
 
-                    //     // const imgData = new ImageData(uint8clampedarray,4)
+        //             //     // const imgData = new ImageData(uint8clampedarray,4)
 
-                    //     // ctx?.putImageData(imgData,0,0)
-                    // }
+        //             //     // ctx?.putImageData(imgData,0,0)
+        //             // }
                    
-                }
+        //         }
                     
-            }
+        //     }
         })
 
 

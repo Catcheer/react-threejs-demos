@@ -2,13 +2,13 @@ import { useLayoutEffect,useState } from "react"
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-
+import env from '../env.js';
 function Group(){
 
     useLayoutEffect(()=>{
         const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth,window.innerHeight)
-        const camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000)
+        renderer.setSize(window.innerWidth-env.nav_width,window.innerHeight)
+        const camera = new THREE.PerspectiveCamera(75,(window.innerWidth-env.nav_width)/window.innerHeight,0.1,1000)
         camera.position.set(0,0,100)
         const scene = new THREE.Scene()
         // scene.background('#aaaaaa')

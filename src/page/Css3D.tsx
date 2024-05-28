@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import * as THREE from 'three';
 import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import TWEEN from '@tweenjs/tween.js';
-
+import env from '../env.js';
 import useBasic from '../hooks/useBasic';
 import './style/tween.scss'
 
@@ -16,7 +16,7 @@ function Css3D() {
         const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
         const cone = new THREE.Mesh(geometry, material);
         cone.name = 'cone';
-        cone.position.set(-10, 0, 0);
+        cone.position.set(0, 0, 0);
         scene.add(cone);
 
 
@@ -30,10 +30,12 @@ function Css3D() {
         
         cone.add(tag)
         // const css3Renderer = new CSS3DRenderer()
-        css3Renderer.setSize(window.innerWidth, window.innerHeight)
+        css3Renderer.setSize(window.innerWidth-env.nav_width, window.innerHeight)
         css3Renderer.domElement.style.position = 'absolute'
+        css3Renderer.domElement.style.width = window.innerWidth - env.nav_width+'px'
         css3Renderer.domElement.style.top = '0px'
-        css3Renderer.domElement.style.left = '0px'
+        // css3Renderer.domElement.style.background = 'red'
+        // css3Renderer.domElement.style.left = env.nav_width+'px'
        
         css3Renderer.render(scene, camera)
         document.getElementById('canvas')?.appendChild(css3Renderer.domElement)
@@ -51,7 +53,7 @@ function Css3D() {
        
         tag.visible =false
         document.addEventListener('click', function (event) {
-            let posX = (event.clientX / window.innerWidth) * 2 - 1
+            let posX = ((event.clientX - env.nav_width) / (window.innerWidth - env.nav_width)) * 2 - 1
             let posY = -(event.clientY / window.innerHeight) * 2 + 1
             raycaster.setFromCamera(new THREE.Vector2(posX, posY), camera);
 

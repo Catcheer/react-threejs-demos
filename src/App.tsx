@@ -15,11 +15,11 @@ function App() {
    
   const canvas = document.querySelector('#canvas')
 
-  const stats = new Stats();
-  stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
-  document.body.appendChild( stats.dom );
+  // const stats = new Stats();
+  // stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
+  // document.body.appendChild( stats.dom );
 
-  const gui = new dat.GUI();
+  // const gui = new dat.GUI();
 
   const width = canvas?.clientWidth||0
   const height = canvas?.clientHeight||0
@@ -33,7 +33,7 @@ function App() {
   const distance = width/2/Math.tan(Math.PI/12)
   const zAxisNumber = Math.floor(distance-depth/2)
   const camera = new THREE.PerspectiveCamera(fov,width/height,0.1,30000)
-  camera.position.set(0,0,100);
+  camera.position.set(0,0,500);
   const cameraTarget = new THREE.Vector3(0,0,0)
   camera.lookAt(cameraTarget)
 
@@ -86,9 +86,9 @@ function App() {
   })
 
   
-  gui.add(directionalLight, 'intensity', 0, 5.0).onChange(()=>{
-    renderer.render(scene,camera)
-  })
+  // gui.add(directionalLight, 'intensity', 0, 5.0).onChange(()=>{
+  //   renderer.render(scene,camera)
+  // })
 
   const ambientLight = new THREE.AmbientLight(0xffffff,1)
   const light_rightBottom = new THREE.PointLight('#ff0000',500,300)
@@ -108,21 +108,21 @@ function App() {
 
   controls.addEventListener('change',(res)=>{
     // console.log(res)
-    stats.begin();
+    // stats.begin();
     renderer.render(scene,camera)
-    stats.end();
+    // stats.end();
   })
 
 
   function rotateAnimate(){
     if(geometry){
-      stats.begin()
+      // stats.begin()
       geometry.rotateX(Math.PI/360);
       geometry.rotateY(Math.PI/360);
       geometry.rotateZ(Math.PI/180);
       
       renderer.render(scene,camera)
-      stats.end()
+      // stats.end()
     }
     window.requestAnimationFrame(rotateAnimate)
    

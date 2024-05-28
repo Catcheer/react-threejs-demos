@@ -37,7 +37,7 @@ const ToDoList: React.FC = () => {
         console.log(list);
     }, [list])
     return (
-        <Row className="wrap">
+        <Row className="wrap" style={{padding:'30px'}}>
             <Col span={12}>
                 <ul className="left">
                     {list.map((item: any, index: number) => {
