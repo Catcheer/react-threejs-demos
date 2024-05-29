@@ -1,10 +1,10 @@
-import React,{useLayoutEffect,useRef} from 'react';
+import React,{useLayoutEffect} from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import Stats from 'three/examples/jsm/libs/stats.module'
-import * as dat from 'dat.gui';
+// import Stats from 'three/examples/jsm/libs/stats.module'
+// import * as dat from 'dat.gui';
 
-import directionalLight from './DirectionalLight'
+import directionalLight from './page/DirectionalLight'
 // import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 // import myJson from 'three/examples/fonts/helvetiker_regular.typeface.json'
 import './App.css';
@@ -28,10 +28,10 @@ function App() {
   // scene.background=new THREE.Color('#aaaaaa');
   // scene.fog = new THREE.Fog(0x000000,0,10000)
 
-  const depth = 1400
+  // const depth = 1400
   const fov = 75
-  const distance = width/2/Math.tan(Math.PI/12)
-  const zAxisNumber = Math.floor(distance-depth/2)
+  // const distance = width/2/Math.tan(Math.PI/12)
+  // const zAxisNumber = Math.floor(distance-depth/2)
   const camera = new THREE.PerspectiveCamera(fov,width/height,0.1,30000)
   camera.position.set(0,0,500);
   const cameraTarget = new THREE.Vector3(0,0,0)

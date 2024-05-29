@@ -1,10 +1,10 @@
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect } from 'react'
 import * as THREE from 'three';
-import { Button } from 'antd'
-import TWEEN from '@tweenjs/tween.js';
+// import { Button } from 'antd'
+// import TWEEN from '@tweenjs/tween.js';
 import useBasic from '../hooks/useBasic';
 
-import directionalLight from '../DirectionalLight'
+import directionalLight from './DirectionalLight'
 
 function Raycaster() {
     let { scene, camera, renderer } = useBasic()
@@ -57,7 +57,7 @@ function Raycaster() {
         renderer?.render(scene, camera)
 
         document.querySelector('#canvas')?.appendChild(renderer?.domElement)
-    }, [])
+    }, [scene, camera, renderer ])
     return (
         <div id='canvas'></div>
     )

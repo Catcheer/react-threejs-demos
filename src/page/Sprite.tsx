@@ -109,8 +109,9 @@ function Sprite() {
             
         }
         const controls = new OrbitControls( camera, renderer.domElement );
+        console.log(controls)
         
-    }, []
+    }, [camera,renderer,scene]
     )
     return (
         <div id="canvas">
