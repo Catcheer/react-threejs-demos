@@ -42,7 +42,7 @@ function useBasic(): any {
     setCamera(camera)
     setRenderer(renderer)
 
-    console.log('-------------------------------------------------------------',renderer)
+    // console.log('-------------------------------------------------------------',renderer)
 
   },[])
 
