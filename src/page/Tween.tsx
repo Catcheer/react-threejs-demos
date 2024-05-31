@@ -14,8 +14,10 @@ function Tween() {
     let [cubA,setCubA] = useState<THREE.Mesh>()
 
     useLayoutEffect(() => {
-
-        const canvas = document.querySelector('#canvas')
+        if (!renderer || !scene || !camera) {
+            return
+        }
+        // const canvas = document.querySelector('#canvas')
 
         const geometry = new THREE.BoxGeometry(10, 10, 10);
         const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
@@ -28,7 +30,7 @@ function Tween() {
 
         console.log(scene)
 
-        canvas?.appendChild(renderer?.domElement);
+        // canvas?.appendChild(renderer?.domElement);
 
 
         // const R = 30 // 半径
@@ -57,7 +59,7 @@ function Tween() {
 
        
 
-    }, [])
+    }, [scene])
 
     const handleToA = () => {
 
@@ -117,7 +119,7 @@ function Tween() {
     return <div className='tween_wrap'>
         <Button className='handle_to_a' ref={refBtn}  >点击</Button>
         
-        <div id='canvas'></div>
+         <canvas id="canvas" style={{ 'display': 'block' }}></canvas>
     </div>
 }
 

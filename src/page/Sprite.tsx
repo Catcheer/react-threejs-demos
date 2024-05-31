@@ -6,8 +6,12 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 function Sprite() {
     let { scene, camera, renderer } = useBasic()
+    console.log(scene, camera, renderer)
 
     useLayoutEffect(() => {
+        if(!renderer || !scene || !camera ){
+            return 
+        }
         function loadMap(path:string) {
             return new Promise((resolve, reject) => {
                 new THREE.TextureLoader().load(path, texture => {
@@ -34,8 +38,8 @@ function Sprite() {
             await  land()
             await sky()
            renderer?.render(scene, camera)
-            const canvasP = document.querySelector('#canvas') as HTMLElement
-            canvasP?.appendChild(renderer?.domElement)
+            // const canvasP = document.querySelector('#canvas') as HTMLElement
+            // canvasP?.appendChild(renderer?.domElement)
 
         }
 
@@ -114,9 +118,9 @@ function Sprite() {
     }, [camera,renderer,scene]
     )
     return (
-        <div id="canvas">
+        <canvas id="canvas" style={{'display':'block'}}>
 
-        </div>
+        </canvas>
     )
 }
 

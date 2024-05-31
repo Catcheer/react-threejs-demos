@@ -9,8 +9,11 @@ import './style/tween.scss'
 function Css3D() {
     let { scene, camera, renderer } = useBasic()
     let css3Renderer = new CSS3DRenderer();
-    useEffect(() => {
-
+    useLayoutEffect(() => {
+        const tagHtml = document.getElementById('tag') as HTMLElement
+        if (!renderer || !scene || !camera || !tagHtml) {
+            return
+        }
         const geometry = new THREE.ConeGeometry(10, 22, 32);
 
         const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
@@ -22,74 +25,77 @@ function Css3D() {
 
 
 
-        const tagHtml = document.getElementById('tag') as HTMLElement
+
         const tag = new CSS3DObject(tagHtml)
-        tag.position.y=11
-        tag.scale.set(0.5,0.5,0.5)
-    
-        
+        tag.position.y = 11
+        tag.scale.set(0.5, 0.5, 0.5)
+
+
         cone.add(tag)
         // const css3Renderer = new CSS3DRenderer()
-        css3Renderer.setSize(window.innerWidth-env.nav_width, window.innerHeight)
+        css3Renderer.setSize(window.innerWidth - env.nav_width, window.innerHeight)
         css3Renderer.domElement.style.position = 'absolute'
-        css3Renderer.domElement.style.width = window.innerWidth - env.nav_width+'px'
+        css3Renderer.domElement.style.width = window.innerWidth - env.nav_width + 'px'
         css3Renderer.domElement.style.top = '0px'
         // css3Renderer.domElement.style.background = 'red'
         // css3Renderer.domElement.style.left = env.nav_width+'px'
-       
+
         css3Renderer.render(scene, camera)
-        document.getElementById('canvas')?.appendChild(css3Renderer.domElement)
+        document.querySelector('.tween_wrap')?.appendChild(css3Renderer.domElement)
 
         css3Renderer.domElement.style.pointerEvents = 'none'
 
         // camera.position.z =50
         renderer?.render(scene, camera)
         const canvasP = document.querySelector('#canvas') as HTMLElement
-        canvasP?.appendChild(renderer?.domElement)
+        // canvasP?.appendChild(renderer?.domElement)
 
 
 
         const raycaster = new THREE.Raycaster();
-       
-        tag.visible =false
+
+        tag.visible = false
         document.addEventListener('click', function (event) {
             let posX = ((event.clientX - env.nav_width) / (window.innerWidth - env.nav_width)) * 2 - 1
             let posY = -(event.clientY / window.innerHeight) * 2 + 1
             raycaster.setFromCamera(new THREE.Vector2(posX, posY), camera);
 
-           console.log('click')
+            // console.log('click')
             const intersects = raycaster.intersectObjects(scene.children);
-           
-            if(intersects.length > 0){
-               
-                 let right = intersects.some(item => item.object.name === 'cone')
-                 console.log(right)
-                 if(right){
-                    tag.visible =true
-                 }
-                 else{
-                    tag.visible =false
-                 }
-            }else{
-                tag.visible =false
+
+            if (intersects.length > 0) {
+
+                let right = intersects.some(item => item.object.name === 'cone')
+                console.log(right)
+                if (right) {
+                    tag.visible = true
+                }
+                else {
+                    tag.visible = false
+                }
+            } else {
+                tag.visible = false
             }
         });
 
 
-    }, [])
+    }, [camera])
 
 
 
     useLayoutEffect(() => {
-               const R = 30 // 半径
+        if ( !camera ) {
+            return
+        }
+        const R = 30 // 半径
 
         let obj = {
             angle: 0
         }
 
-        
+
         const tween = new TWEEN.Tween(obj)
-        tween.to({ angle:Math.PI*2 }, 3000)
+        tween.to({ angle: Math.PI * 2 }, 3000)
         tween.onUpdate((obj) => {
             // camera.position.set(obj.x, obj.y, obj.z)
             camera.position.x = R * Math.sin(obj.angle)
@@ -101,7 +107,7 @@ function Css3D() {
 
         loop()
 
-    }, [])
+    }, [camera])
 
 
     const loop = () => {
@@ -112,8 +118,8 @@ function Css3D() {
     }
 
     return <div className="tween_wrap">
-            <div id="tag">tag</div>
-            <div id="canvas"></div>
+        <div id="tag">tag</div>
+        <canvas id="canvas" style={{ 'display': 'block' }}></canvas>
     </div>
 }
 

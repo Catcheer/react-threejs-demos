@@ -14,7 +14,9 @@ function AxisTransform() {
 
     useLayoutEffect(() => {
 
-
+        if (!renderer || !scene || !camera ) {
+            return
+        }
         const geometry = new THREE.BoxGeometry(10, 10, 10);
 
         const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
@@ -28,7 +30,7 @@ function AxisTransform() {
 
 
 
-        document.querySelector('#canvas')?.appendChild(renderer?.domElement)
+        // document.querySelector('#canvas')?.appendChild(renderer?.domElement)
 
 
 
@@ -75,9 +77,9 @@ function AxisTransform() {
             requestAnimationFrame(loop);
 
         }
-    }, [])
+    }, [scene])
 
-    return <div id='canvas'></div>
+    return <canvas id="canvas" style={{ 'display': 'block' }}></canvas>
 }
 
 export default AxisTransform;

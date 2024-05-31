@@ -16,7 +16,9 @@ function EffectComposerDemo() {
 
     useLayoutEffect(() => {
 
-
+        if (!renderer || !scene || !camera ) {
+            return
+        }
         const geometry = new THREE.BoxGeometry(10, 10, 10);
         const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         const cube = new THREE.Mesh(geometry, material);
@@ -41,8 +43,8 @@ function EffectComposerDemo() {
         // 设置OutlinePass通道
         composer.addPass(outlinePass);
 
-        const canvasP = document.querySelector('#canvas') as HTMLElement
-        canvasP?.appendChild(renderer?.domElement)
+        // const canvasP = document.querySelector('#canvas') as HTMLElement
+        // canvasP?.appendChild(renderer?.domElement)
 
         camera.position.set(30, 30, 30)
         camera.lookAt(0, 0, 0)
@@ -66,7 +68,7 @@ function EffectComposerDemo() {
 
     }, [scene, camera, renderer])
 
-    return (<div id='canvas'></div>)
+    return (<canvas id="canvas" style={{ 'display': 'block' }}></canvas>)
 }
 
 export default EffectComposerDemo

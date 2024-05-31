@@ -4,10 +4,10 @@ import { useLayoutEffect, useState } from "react"
 import * as THREE from 'three';
 import env from '../env.js';
 function DrawImg() {
-    const [canvas, setCanvas] = useState()
+   
     useLayoutEffect(() => {
         const mycanvas: any = document.body.querySelector('#mycanvas') as HTMLCanvasElement
-        const myEl = document.body.querySelector('#myEl')
+        // const myEl = document.body.querySelector('#myEl')
         if (mycanvas) {
 
 

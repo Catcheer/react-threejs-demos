@@ -10,7 +10,9 @@ function Raycaster() {
     let { scene, camera, renderer } = useBasic()
 
     useLayoutEffect(() => {
-
+        if (!renderer || !scene || !camera ) {
+            return
+        }
         // const ray = new THREE.Ray()
         // ray.origin.set(10, 10, 10)
         // ray.direction.set(1, 1, 1).normalize()
@@ -56,10 +58,10 @@ function Raycaster() {
 
         renderer?.render(scene, camera)
 
-        document.querySelector('#canvas')?.appendChild(renderer?.domElement)
+        // document.querySelector('#canvas')?.appendChild(renderer?.domElement)
     }, [scene, camera, renderer ])
     return (
-        <div id='canvas'></div>
+        <canvas id="canvas"  style={{ 'display': 'block' }}></canvas>
     )
 }
 

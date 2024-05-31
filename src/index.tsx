@@ -23,6 +23,7 @@ import Css3D from './page/Css3D';
 import Sprite from './page/Sprite';
 import AxisTransform from './page/AxisTransform';
 import EffectComposer from './page/EffectComposer';
+import LightDemoBasic from './page/LightDemoBasic';
 
 
 
@@ -77,6 +78,7 @@ function MyApp() {
         <Link to="/Css3D">Css3D标签显隐</Link>
         <Link to="/AxisTransform">Raycaster射线拾取几何体</Link>
         <Link to="/EffectComposer">EffectComposer后期处理</Link>
+        <Link to="/LightDemoBasic">LightDemoBasic</Link>
         <Link to="/ToDoList">ToDoList</Link>
        
       </nav>
@@ -96,6 +98,7 @@ function MyApp() {
         
           <Route path="/AxisTransform" element={<AxisTransform />} />
           <Route path="/EffectComposer" element={<EffectComposer />} />
+          <Route path="/LightDemoBasic" element={<LightDemoBasic />} />
           <Route path="/ToDoList" element={<ToDoList />} />
       </Routes>
         </div>
