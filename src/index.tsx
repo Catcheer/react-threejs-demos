@@ -23,6 +23,7 @@ import Css3D from './page/Css3D';
 import Sprite from './page/Sprite';
 import AxisTransform from './page/AxisTransform';
 import EffectComposer from './page/EffectComposer';
+import TexTureDemo from './page/TexTureDemo';
 import LightDemoBasic from './page/LightDemoBasic';
 
 
@@ -79,6 +80,7 @@ function MyApp() {
         <Link to="/AxisTransform">Raycaster射线拾取几何体</Link>
         <Link to="/EffectComposer">EffectComposer后期处理</Link>
         <Link to="/LightDemoBasic">LightDemoBasic</Link>
+        <Link to="/TexTureDemo">材质</Link>
         <Link to="/ToDoList">ToDoList</Link>
        
       </nav>
@@ -99,6 +101,7 @@ function MyApp() {
           <Route path="/AxisTransform" element={<AxisTransform />} />
           <Route path="/EffectComposer" element={<EffectComposer />} />
           <Route path="/LightDemoBasic" element={<LightDemoBasic />} />
+          <Route path="/TexTureDemo" element={<TexTureDemo />} />
           <Route path="/ToDoList" element={<ToDoList />} />
       </Routes>
         </div>

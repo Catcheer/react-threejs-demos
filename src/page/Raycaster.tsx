@@ -4,7 +4,7 @@ import * as THREE from 'three';
 // import TWEEN from '@tweenjs/tween.js';
 import useBasic from '../hooks/useBasic';
 
-import directionalLight from './DirectionalLight'
+import directionalLight from './lights/DirectionalLight'
 
 function Raycaster() {
     let { scene, camera, renderer } = useBasic()

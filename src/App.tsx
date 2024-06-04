@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 // import Stats from 'three/examples/jsm/libs/stats.module'
 // import * as dat from 'dat.gui';
 
-import directionalLight from './page/DirectionalLight'
+import directionalLight from './page/lights/DirectionalLight'
 // import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 // import myJson from 'three/examples/fonts/helvetiker_regular.typeface.json'
 import './App.css';
