@@ -24,6 +24,7 @@ import Sprite from './page/Sprite';
 import AxisTransform from './page/AxisTransform';
 import EffectComposer from './page/EffectComposer';
 import TexTureDemo from './page/TexTureDemo';
+import Geometries from './page/Geometries';
 import LightDemoBasic from './page/LightDemoBasic';
 
 
@@ -81,6 +82,7 @@ function MyApp() {
         <Link to="/EffectComposer">EffectComposer后期处理</Link>
         <Link to="/LightDemoBasic">LightDemoBasic</Link>
         <Link to="/TexTureDemo">材质</Link>
+        <Link to="/Geometries">小火车</Link>
         <Link to="/ToDoList">ToDoList</Link>
        
       </nav>
@@ -102,6 +104,7 @@ function MyApp() {
           <Route path="/EffectComposer" element={<EffectComposer />} />
           <Route path="/LightDemoBasic" element={<LightDemoBasic />} />
           <Route path="/TexTureDemo" element={<TexTureDemo />} />
+          <Route path="/Geometries" element={<Geometries />} />
           <Route path="/ToDoList" element={<ToDoList />} />
       </Routes>
         </div>
