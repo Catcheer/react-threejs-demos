@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import useBasic from '../hooks/useBasic';
 import ambientLight from './lights/AmbientLight'
 import createDirectionLight from './lights/createDirectionLight'
@@ -15,7 +16,7 @@ function Geometries() {
             return
         }
 
-      
+        const glfLoader = new GLTFLoader();
         const group = new THREE.Group();
 
         const cylinderGeometry = new THREE.CylinderGeometry(2, 2, 6, 12);
@@ -80,7 +81,43 @@ function Geometries() {
         const axesHelper = new THREE.AxesHelper(20);
         scene.add(axesHelper);
 
+        let mixer:THREE.AnimationMixer
+        let mixer1:THREE.AnimationMixer
+        let mixer2:THREE.AnimationMixer
+        glfLoader.load('mods/Flamingo.glb',(glf)=>{
+          const clip = glf.animations[0]
+
+          const flamingo = glf.scene.children[0]
+          mixer = new THREE.AnimationMixer(flamingo)
+          mixer.clipAction(clip).play()
+         
+          flamingo.position.set(7.5, 8, -10);
+          flamingo.scale.set(0.1,0.1,0.1)
+            scene.add(flamingo)
+        })
+        glfLoader.load('mods/Parrot.glb',(glf)=>{
+          const clip = glf.animations[0]
+          const  parrot = glf.scene.children[0]  
+          parrot.position.set(0, 10, 2.5);
+          mixer1 = new THREE.AnimationMixer(parrot)
+          mixer1.clipAction(clip).play()
+          parrot.scale.set(0.1,0.1,0.1)
+          scene.add(parrot)
+        })
+        glfLoader.load('mods/Stork.glb',(glf)=>{
+          const clip = glf.animations[0]
+            const stork = glf.scene.children[0]
+            stork.position.set(0, 7, -10);
+            mixer2 = new THREE.AnimationMixer(stork)
+            mixer2.clipAction(clip).play()
+            stork.scale.set(0.1,0.1,0.1)
+
+            scene.add(stork)
+        })
         controls.enableDamping = true;
+
+        const clock = new THREE.Clock()
+
         function loop() {
             group.position.z+=0.01
             if (group.position.z > 10) {
@@ -91,6 +128,16 @@ function Geometries() {
             sheels.rotation.x += 0.02
             s2.rotation.x += 0.02
             s3.rotation.x += 0.02
+            const delta = clock.getDelta()
+            if(mixer){
+              mixer.update(delta)
+            }
+            if(mixer1){
+              mixer1.update(delta)
+            }
+            if(mixer2){
+              mixer2.update(delta)
+            }
             controls.update();
             renderer.render(scene, camera);
             controls.update();
