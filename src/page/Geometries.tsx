@@ -111,7 +111,7 @@ function Geometries() {
             mixer2 = new THREE.AnimationMixer(stork)
             mixer2.clipAction(clip).play()
             stork.scale.set(0.1,0.1,0.1)
-
+            
             scene.add(stork)
         })
         controls.enableDamping = true;

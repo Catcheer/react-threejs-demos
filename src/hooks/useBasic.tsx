@@ -23,7 +23,8 @@ function useBasic(): any {
 
    let renderer = new THREE.WebGLRenderer({
       canvas: canvasP as HTMLCanvasElement,
-      antialias: true
+      antialias: true,
+      alpha: true
     });
 
 

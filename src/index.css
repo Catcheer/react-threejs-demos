@@ -39,3 +39,10 @@ code {
   flex: 1;
   height: 100vh;
 }
+
+.font_demo_wrap{
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(3, 192, 60, .3) 1px, transparent 1px), linear-gradient(90deg, rgba(3, 192, 60, .3) 1px, transparent 1px);
+  background-size: 1em 1em;
+}
