@@ -14,6 +14,8 @@ function LineGemo() {
             return
         }
 
+      
+
 
         scene.background = null;
         renderer.setClearAlpha(0)
