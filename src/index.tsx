@@ -27,6 +27,9 @@ import TexTureDemo from './page/TexTureDemo';
 import Geometries from './page/Geometries';
 import LightDemoBasic from './page/LightDemoBasic';
 import FontDemo from './page/FontDemo';
+import Matilda from './page/Matilda';
+import UpdateResource from './page/updateResource';
+import ClickDrawLine from './page/clickDrawLine';
 import LineGemo from './page/LineGemo';
 
 
@@ -87,6 +90,9 @@ function MyApp() {
         <Link to="/Geometries">小火车</Link>
         <Link to="/FontDemo">FontDemo</Link>
         <Link to="/LineGemo">LineGemo</Link>
+        <Link to="/Matilda">Matilda</Link>
+        <Link to="/UpdateResource">UpdateResource</Link>
+        <Link to="/ClickDrawLine">ClickDrawLine</Link>
         <Link to="/ToDoList">ToDoList</Link>
        
       </nav>
@@ -111,6 +117,9 @@ function MyApp() {
           <Route path="/Geometries" element={<Geometries />} />
           <Route path="/FontDemo" element={<FontDemo />} />
           <Route path="/LineGemo" element={<LineGemo />} />
+          <Route path="/Matilda" element={<Matilda />} />
+          <Route path="/UpdateResource" element={<UpdateResource />} />
+          <Route path="/ClickDrawLine" element={<ClickDrawLine />} />
           <Route path="/ToDoList" element={<ToDoList />} />
       </Routes>
         </div>
