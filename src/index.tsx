@@ -30,6 +30,7 @@ import FontDemo from './page/FontDemo';
 import Matilda from './page/Matilda';
 import UpdateResource from './page/updateResource';
 import ClickDrawLine from './page/clickDrawLine';
+import ClickDrawLine1 from './page/clickDrawLine1';
 import LineGemo from './page/LineGemo';
 
 
@@ -71,7 +72,7 @@ function MyApp() {
   return (
 
     <div className='layout_wrap'>
-      <nav className='left_nav' style={{width:env.nav_width+'px'}}>
+      <nav className='left_nav' style={{width:env.nav_width+'px',overflow:'auto'}}>
        <Link to="/">地球</Link>
        <Link to="/Sprite">下雪</Link>
         <Link to="/TestCanvas">canvas drawImg</Link>
@@ -93,6 +94,7 @@ function MyApp() {
         <Link to="/Matilda">Matilda</Link>
         <Link to="/UpdateResource">UpdateResource</Link>
         <Link to="/ClickDrawLine">ClickDrawLine</Link>
+        <Link to="/ClickDrawLine1">ClickDrawLine1</Link>
         <Link to="/ToDoList">ToDoList</Link>
        
       </nav>
@@ -120,6 +122,7 @@ function MyApp() {
           <Route path="/Matilda" element={<Matilda />} />
           <Route path="/UpdateResource" element={<UpdateResource />} />
           <Route path="/ClickDrawLine" element={<ClickDrawLine />} />
+          <Route path="/ClickDrawLine1" element={<ClickDrawLine1 />} />
           <Route path="/ToDoList" element={<ToDoList />} />
       </Routes>
         </div>
