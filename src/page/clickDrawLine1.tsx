@@ -20,10 +20,9 @@ function ClickDrawLine1() {
         camera.lookAt(0, 0, 0);//指向坐标原点
 
        
-      
-        
+
        
-       scene.add(lineGroup)
+        scene.add(lineGroup)
         makeLine()
 
        const sphere = smallBoll()
@@ -108,7 +107,6 @@ function ClickDrawLine1() {
             requestAnimationFrame(ani)
         }
         ani()
-
 
     }, [scene])
 
