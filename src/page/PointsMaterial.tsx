@@ -67,7 +67,7 @@ function PointsMaterial() {
       vertices.push(x, y, z);
       color.setHSL(i / pointsCount, 1.0, 0.5);
       colors.push(color.r, color.g, color.b)
-      sizes.push( 30 );
+      sizes.push( 20 );
 
     }
 
