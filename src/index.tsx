@@ -31,6 +31,7 @@ import Matilda from './page/Matilda';
 import UpdateResource from './page/updateResource';
 import ClickDrawLine from './page/clickDrawLine';
 import ClickDrawLine1 from './page/clickDrawLine1';
+import PointsMaterial from './page/PointsMaterial';
 // import Matrixtransformations from './page/Matrixtransformations';
 import LineGemo from './page/LineGemo';
 
@@ -96,6 +97,7 @@ function MyApp() {
         <Link to="/UpdateResource">UpdateResource</Link>
         <Link to="/ClickDrawLine">ClickDrawLine</Link>
         <Link to="/ClickDrawLine1">ClickDrawLine1</Link>
+        <Link to="/PointsMaterial">PointsMaterial</Link>
         {/* <Link to="/Matrixtransformations">Matrixtransformations</Link> */}
         <Link to="/ToDoList">ToDoList</Link>
        
@@ -125,6 +127,7 @@ function MyApp() {
           <Route path="/UpdateResource" element={<UpdateResource />} />
           <Route path="/ClickDrawLine" element={<ClickDrawLine />} />
           <Route path="/ClickDrawLine1" element={<ClickDrawLine1 />} />
+          <Route path="/PointsMaterial" element={<PointsMaterial />} />
           {/* <Route path="/Matrixtransformations" element={<Matrixtransformations />} /> */}
           <Route path="/ToDoList" element={<ToDoList />} />
       </Routes>
