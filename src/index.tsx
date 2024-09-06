@@ -32,6 +32,7 @@ import UpdateResource from './page/updateResource';
 import ClickDrawLine from './page/clickDrawLine';
 import ClickDrawLine1 from './page/clickDrawLine1';
 import PointsMaterial from './page/PointsMaterial';
+import SimplePlanet from './page/SimplePlanet';
 // import Matrixtransformations from './page/Matrixtransformations';
 import LineGemo from './page/LineGemo';
 
@@ -98,6 +99,7 @@ function MyApp() {
         <Link to="/ClickDrawLine">ClickDrawLine</Link>
         <Link to="/ClickDrawLine1">ClickDrawLine1</Link>
         <Link to="/PointsMaterial">PointsMaterial</Link>
+        <Link to="/SimplePlanet">SimplePlanet</Link>
         {/* <Link to="/Matrixtransformations">Matrixtransformations</Link> */}
         <Link to="/ToDoList">ToDoList</Link>
        
@@ -128,6 +130,7 @@ function MyApp() {
           <Route path="/ClickDrawLine" element={<ClickDrawLine />} />
           <Route path="/ClickDrawLine1" element={<ClickDrawLine1 />} />
           <Route path="/PointsMaterial" element={<PointsMaterial />} />
+          <Route path="/SimplePlanet" element={<SimplePlanet />} />
           {/* <Route path="/Matrixtransformations" element={<Matrixtransformations />} /> */}
           <Route path="/ToDoList" element={<ToDoList />} />
       </Routes>
