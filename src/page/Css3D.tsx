@@ -34,8 +34,9 @@ function Css3D() {
         cone.add(tag)
         // const css3Renderer = new CSS3DRenderer()
         css3Renderer.setSize(window.innerWidth - env.nav_width, window.innerHeight)
+        console.log(css3Renderer)
         css3Renderer.domElement.style.position = 'absolute'
-        css3Renderer.domElement.style.width = window.innerWidth - env.nav_width + 'px'
+        // css3Renderer.domElement.style.width = window.innerWidth - env.nav_width + 'px'
         css3Renderer.domElement.style.top = '0px'
         // css3Renderer.domElement.style.background = 'red'
         // css3Renderer.domElement.style.left = env.nav_width+'px'

@@ -33,6 +33,9 @@ import ClickDrawLine from './page/clickDrawLine';
 import ClickDrawLine1 from './page/clickDrawLine1';
 import PointsMaterial from './page/PointsMaterial';
 import SimplePlanet from './page/SimplePlanet';
+import Wave from './page/Wave';
+import FlowPathAni from './page/FlowPathAni';
+import City from './page/City';
 // import Matrixtransformations from './page/Matrixtransformations';
 import LineGemo from './page/LineGemo';
 
@@ -100,6 +103,9 @@ function MyApp() {
         <Link to="/ClickDrawLine1">ClickDrawLine1</Link>
         <Link to="/PointsMaterial">PointsMaterial</Link>
         <Link to="/SimplePlanet">SimplePlanet</Link>
+        <Link to="/Wave">Wave</Link>
+        <Link to="/FlowPathAni">FlowPathAni</Link>
+        <Link to="/City">City</Link>
         {/* <Link to="/Matrixtransformations">Matrixtransformations</Link> */}
         <Link to="/ToDoList">ToDoList</Link>
        
@@ -131,6 +137,9 @@ function MyApp() {
           <Route path="/ClickDrawLine1" element={<ClickDrawLine1 />} />
           <Route path="/PointsMaterial" element={<PointsMaterial />} />
           <Route path="/SimplePlanet" element={<SimplePlanet />} />
+          <Route path="/Wave" element={<Wave />} />
+          <Route path="/FlowPathAni" element={<FlowPathAni />} />
+          <Route path="/City" element={<City />} />
           {/* <Route path="/Matrixtransformations" element={<Matrixtransformations />} /> */}
           <Route path="/ToDoList" element={<ToDoList />} />
       </Routes>
