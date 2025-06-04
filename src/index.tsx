@@ -105,10 +105,10 @@ function MyApp() {
         <Link to="/ClickDrawLine1">ClickDrawLine1</Link>
         <Link to="/PointsMaterial">PointsMaterial</Link>
         <Link to="/SimplePlanet">SimplePlanet</Link>
-        <Link to="/Wave">Wave</Link>
+        <Link to="/Wave">波浪特效</Link>
         <Link to="/FlowPathAni">FlowPathAni</Link>
         <Link to="/City">City</Link>
-        <Link to="/Cannon">Cannon</Link>
+        <Link to="/Cannon">碰撞检测</Link>
         {/* <Link to="/Matrixtransformations">Matrixtransformations</Link> */}
         <Link to="/ToDoList">ToDoList</Link>
        

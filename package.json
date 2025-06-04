@@ -13,6 +13,7 @@
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "antd": "^5.16.5",
+    "cannon-es": "^0.20.0",
     "dat.gui": "^0.7.9",
     "gsap": "^3.12.5",
     "jquery": "^3.7.1",
