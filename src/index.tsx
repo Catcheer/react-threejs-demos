@@ -37,6 +37,7 @@ import Wave from './page/Wave';
 import FlowPathAni from './page/FlowPathAni';
 import City from './page/City';
 import Cannon from './page/Cannon';
+import BallFalling from './page/BallFalling';
 // import Matrixtransformations from './page/Matrixtransformations';
 import LineGemo from './page/LineGemo';
 
@@ -109,6 +110,7 @@ function MyApp() {
         <Link to="/FlowPathAni">FlowPathAni</Link>
         <Link to="/City">City</Link>
         <Link to="/Cannon">碰撞检测</Link>
+        <Link to="/BallFalling">小球坠落</Link>
         {/* <Link to="/Matrixtransformations">Matrixtransformations</Link> */}
         <Link to="/ToDoList">ToDoList</Link>
        
@@ -144,6 +146,7 @@ function MyApp() {
           <Route path="/FlowPathAni" element={<FlowPathAni />} />
           <Route path="/City" element={<City />} />
           <Route path="/Cannon" element={<Cannon />} />
+          <Route path="/BallFalling" element={<BallFalling />} />
           {/* <Route path="/Matrixtransformations" element={<Matrixtransformations />} /> */}
           <Route path="/ToDoList" element={<ToDoList />} />
       </Routes>

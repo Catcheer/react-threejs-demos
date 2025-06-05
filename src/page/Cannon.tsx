@@ -22,6 +22,7 @@ export default function Cannon() {
     if (!renderer || !scene || !camera) {
       return;
     }
+    
     renderer.shadowMap.enabled = true;
     scene.fog = new THREE.Fog(0x000000, 0, 600);
     scene.castShadow = true;
