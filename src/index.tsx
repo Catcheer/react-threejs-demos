@@ -82,7 +82,12 @@ function MyApp() {
 
     <div className='layout_wrap'>
       <nav className='left_nav' style={{width:env.nav_width+'px',overflow:'auto'}}>
-       <Link to="/">地球</Link>
+          <Link to="/">波浪特效</Link>
+        <Link to="/FlowPathAni">FlowPathAni</Link>
+        <Link to="/City">City</Link>
+        <Link to="/Cannon">碰撞检测</Link>
+        <Link to="/BallFalling">小球坠落</Link>
+       <Link to="/earth">地球</Link>
        <Link to="/Sprite">下雪</Link>
         <Link to="/TestCanvas">canvas drawImg</Link>
         <Link to="/Target">canvas作为贴图</Link>
@@ -106,18 +111,19 @@ function MyApp() {
         <Link to="/ClickDrawLine1">ClickDrawLine1</Link>
         <Link to="/PointsMaterial">PointsMaterial</Link>
         <Link to="/SimplePlanet">SimplePlanet</Link>
-        <Link to="/Wave">波浪特效</Link>
-        <Link to="/FlowPathAni">FlowPathAni</Link>
-        <Link to="/City">City</Link>
-        <Link to="/Cannon">碰撞检测</Link>
-        <Link to="/BallFalling">小球坠落</Link>
+    
         {/* <Link to="/Matrixtransformations">Matrixtransformations</Link> */}
         <Link to="/ToDoList">ToDoList</Link>
        
       </nav>
         <div className='main_conten'>
         <Routes>
-          <Route path="/" element={<App />} />
+            <Route path="/" element={<Wave />} />
+          <Route path="/FlowPathAni" element={<FlowPathAni />} />
+          <Route path="/City" element={<City />} />
+          <Route path="/Cannon" element={<Cannon />} />
+          <Route path="/BallFalling" element={<BallFalling />} />
+          <Route path="/earth" element={<App />} />
           <Route path="/Sprite" element={<Sprite />} />
           <Route path="/TestCanvas" element={<TestCanvas />} />
           <Route path="/DrawImg" element={<DrawImg />} />
@@ -142,11 +148,7 @@ function MyApp() {
           <Route path="/ClickDrawLine1" element={<ClickDrawLine1 />} />
           <Route path="/PointsMaterial" element={<PointsMaterial />} />
           <Route path="/SimplePlanet" element={<SimplePlanet />} />
-          <Route path="/Wave" element={<Wave />} />
-          <Route path="/FlowPathAni" element={<FlowPathAni />} />
-          <Route path="/City" element={<City />} />
-          <Route path="/Cannon" element={<Cannon />} />
-          <Route path="/BallFalling" element={<BallFalling />} />
+        
           {/* <Route path="/Matrixtransformations" element={<Matrixtransformations />} /> */}
           <Route path="/ToDoList" element={<ToDoList />} />
       </Routes>
