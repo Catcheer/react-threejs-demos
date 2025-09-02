@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { Routes, Route, BrowserRouter, Link, Outlet } from "react-router-dom";
 
 
-import {Ion} from "cesium";
+
 import "cesium/Build/Cesium/Widgets/widgets.css";
 
 
@@ -44,8 +44,10 @@ import City from './page/City';
 import Cannon from './page/Cannon';
 import BallFalling from './page/BallFalling';
 import CesiumBasic from './page/CesiumBasic';
+import Osm from './page/Osm';
 // import Matrixtransformations from './page/Matrixtransformations';
 import LineGemo from './page/LineGemo';
+import ImageryProvider from './page/ImageryProvider';
 
 
 
@@ -53,9 +55,9 @@ import env from './env.js';
 
 import ToDoList from './page/ToDoList';
 
-
+const Cesium = (window as any).Cesium;
 window.CESIUM_BASE_URL = '/';
-Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmMWQ4ZGVhOS02NWQ2LTQyZjQtYmNhMy1iZWNjNGI2NzQ4MDUiLCJpZCI6MzA5NzcwLCJpYXQiOjE3NDkxOTA3NDJ9.z35zsXXOtWIjtCb4LKzHsm0tEhAilzo15sMFRDYsAJ0';
+Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmMWQ4ZGVhOS02NWQ2LTQyZjQtYmNhMy1iZWNjNGI2NzQ4MDUiLCJpZCI6MzA5NzcwLCJpYXQiOjE3NDkxOTA3NDJ9.z35zsXXOtWIjtCb4LKzHsm0tEhAilzo15sMFRDYsAJ0';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -89,7 +91,7 @@ function MyApp() {
   return (
 
     <div className='layout_wrap'>
-      <nav className='left_nav' style={{width:env.nav_width+'px',overflow:'auto'}}>
+      {/* <nav className='left_nav' style={{width:env.nav_width+'px',overflow:'auto'}}>
           <Link to="/">波浪特效</Link>
         <Link to="/FlowPathAni">FlowPathAni</Link>
         <Link to="/City">City</Link>
@@ -120,11 +122,13 @@ function MyApp() {
         <Link to="/PointsMaterial">PointsMaterial</Link>
         <Link to="/SimplePlanet">SimplePlanet</Link>
         <Link to="/CesiumBasic">cesium基础</Link>
+        <Link to="/ImageryProvider">ImageryProvider</Link>
+        <Link to="/Osm">Osm</Link>
     
-        {/* <Link to="/Matrixtransformations">Matrixtransformations</Link> */}
+        
         <Link to="/ToDoList">ToDoList</Link>
        
-      </nav>
+      </nav> */}
         <div className='main_conten'>
         <Routes>
             <Route path="/" element={<Wave />} />
@@ -158,6 +162,8 @@ function MyApp() {
           <Route path="/PointsMaterial" element={<PointsMaterial />} />
           <Route path="/SimplePlanet" element={<SimplePlanet />} />
           <Route path="/CesiumBasic" element={<CesiumBasic />} />
+          <Route path="/ImageryProvider" element={<ImageryProvider />} />
+          <Route path="/Osm" element={<Osm />} />
         
           {/* <Route path="/Matrixtransformations" element={<Matrixtransformations />} /> */}
           <Route path="/ToDoList" element={<ToDoList />} />

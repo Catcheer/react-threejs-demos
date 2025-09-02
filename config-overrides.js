@@ -6,6 +6,16 @@ const cesiumSource = 'node_modules/cesium/Source';
 const cesiumWorkers = '../Build/Cesium/Workers';
 
 module.exports = function override(config, env) {
+  config.devServer= {
+
+//  proxy: [
+//       {
+//         context: ['/geoserver'],
+//         target: 'http://localhost:7986/',
+//         // pathRewrite: { '^/tdt': '' },
+//       },
+//     ],
+  }
   // config.resolve.alias = {
   //   ...(config.resolve.alias || {}),
   //   cesium: path.resolve(__dirname, cesiumSource),

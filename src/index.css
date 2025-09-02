@@ -46,3 +46,6 @@ code {
   background-image: linear-gradient(rgba(3, 192, 60, .3) 1px, transparent 1px), linear-gradient(90deg, rgba(3, 192, 60, .3) 1px, transparent 1px);
   background-size: 1em 1em;
 }
+.cesium-viewer .cesium-widget-credits{
+  display: none;
+}
