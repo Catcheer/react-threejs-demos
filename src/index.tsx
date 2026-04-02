@@ -48,6 +48,8 @@ import Osm from './page/Osm';
 // import Matrixtransformations from './page/Matrixtransformations';
 import LineGemo from './page/LineGemo';
 import ImageryProvider from './page/ImageryProvider';
+import Measure from './page/Measure';
+import Bord from './page/Bord';
 
 
 
@@ -91,7 +93,7 @@ function MyApp() {
   return (
 
     <div className='layout_wrap'>
-      {/* <nav className='left_nav' style={{width:env.nav_width+'px',overflow:'auto'}}>
+      <nav className='left_nav' style={{width:env.nav_width+'px',overflow:'auto'}}>
           <Link to="/">波浪特效</Link>
         <Link to="/FlowPathAni">FlowPathAni</Link>
         <Link to="/City">City</Link>
@@ -124,11 +126,13 @@ function MyApp() {
         <Link to="/CesiumBasic">cesium基础</Link>
         <Link to="/ImageryProvider">ImageryProvider</Link>
         <Link to="/Osm">Osm</Link>
+        <Link to="/Measure">Measure</Link>
+        <Link to="/Bord">Bord</Link>
     
         
         <Link to="/ToDoList">ToDoList</Link>
        
-      </nav> */}
+      </nav>
         <div className='main_conten'>
         <Routes>
             <Route path="/" element={<Wave />} />
@@ -164,7 +168,8 @@ function MyApp() {
           <Route path="/CesiumBasic" element={<CesiumBasic />} />
           <Route path="/ImageryProvider" element={<ImageryProvider />} />
           <Route path="/Osm" element={<Osm />} />
-        
+          <Route path="/Measure" element={<Measure />} />
+          <Route path="/Bord" element={<Bord />} />
           {/* <Route path="/Matrixtransformations" element={<Matrixtransformations />} /> */}
           <Route path="/ToDoList" element={<ToDoList />} />
       </Routes>
