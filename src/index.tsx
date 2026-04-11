@@ -50,6 +50,7 @@ import LineGemo from './page/LineGemo';
 import ImageryProvider from './page/ImageryProvider';
 import Measure from './page/Measure';
 import Bord from './page/Bord';
+import ZhangQian from './page/ZhangQian';
 
 
 
@@ -68,11 +69,11 @@ const root = ReactDOM.createRoot(
 root.render(
   // <React.StrictMode>
 
-    <Provider store={store}>
-      <BrowserRouter>
-        <MyApp />
-      </BrowserRouter>
-    </Provider>
+  <Provider store={store}>
+    <BrowserRouter>
+      <MyApp />
+    </BrowserRouter>
+  </Provider>
 
   // </React.StrictMode>
 
@@ -93,14 +94,14 @@ function MyApp() {
   return (
 
     <div className='layout_wrap'>
-      <nav className='left_nav' style={{width:env.nav_width+'px',overflow:'auto'}}>
-          <Link to="/">波浪特效</Link>
+      <nav className='left_nav' style={{ width: env.nav_width + 'px', overflow: 'auto' }}>
+        <Link to="/">波浪特效</Link>
         <Link to="/FlowPathAni">FlowPathAni</Link>
         <Link to="/City">City</Link>
         <Link to="/Cannon">碰撞检测</Link>
         <Link to="/BallFalling">小球坠落</Link>
-       <Link to="/earth">地球</Link>
-       <Link to="/Sprite">下雪</Link>
+        <Link to="/earth">地球</Link>
+        <Link to="/Sprite">下雪</Link>
         <Link to="/TestCanvas">canvas drawImg</Link>
         <Link to="/Target">canvas作为贴图</Link>
         <Link to="/DrawImg">DrawImg</Link>
@@ -128,14 +129,15 @@ function MyApp() {
         <Link to="/Osm">Osm</Link>
         <Link to="/Measure">Measure</Link>
         <Link to="/Bord">Bord</Link>
-    
-        
+        <Link to="/ZhangQian">张骞出使西域</Link>
+
+
         <Link to="/ToDoList">ToDoList</Link>
-       
+
       </nav>
-        <div className='main_conten'>
+      <div className='main_conten'>
         <Routes>
-            <Route path="/" element={<Wave />} />
+          <Route path="/" element={<Wave />} />
           <Route path="/FlowPathAni" element={<FlowPathAni />} />
           <Route path="/City" element={<City />} />
           <Route path="/Cannon" element={<Cannon />} />
@@ -151,7 +153,7 @@ function MyApp() {
           <Route path="/Css2D" element={<Css2D />} />
           <Route path="/Raycaster" element={<Raycaster />} />
           <Route path="/Css3D" element={<Css3D />} />
-        
+
           <Route path="/AxisTransform" element={<AxisTransform />} />
           <Route path="/EffectComposer" element={<EffectComposer />} />
           <Route path="/LightDemoBasic" element={<LightDemoBasic />} />
@@ -170,10 +172,11 @@ function MyApp() {
           <Route path="/Osm" element={<Osm />} />
           <Route path="/Measure" element={<Measure />} />
           <Route path="/Bord" element={<Bord />} />
+          <Route path="/ZhangQian" element={<ZhangQian />} />
           {/* <Route path="/Matrixtransformations" element={<Matrixtransformations />} /> */}
           <Route path="/ToDoList" element={<ToDoList />} />
-      </Routes>
-        </div>
+        </Routes>
+      </div>
     </div>
 
   );
