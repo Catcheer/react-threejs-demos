@@ -29,8 +29,24 @@ export default function ZhangQian() {
                         "&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=tiles&tk=" +
                         token,
                     subdomains: ["0", "1", "2", "3", "4", "5", "6", "7"],
+                    tilingScheme: new Cesium.WebMercatorTilingScheme(),
+                    maximumLevel: 18,
                 }),
             });
+
+
+            // 叠加天地图中文标注
+            const labelLayer = new Cesium.UrlTemplateImageryProvider({
+                url:
+                    "https://t{s}.tianditu.gov.cn/cva_w/wmts?SERVICE=WMTS&REQUEST=GetTile" +
+                    "&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w" +
+                    "&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=tiles&tk=" +
+                    token,
+                subdomains: ["0", "1", "2", "3", "4", "5", "6", "7"],
+                tilingScheme: new Cesium.WebMercatorTilingScheme(),
+                maximumLevel: 18,
+            });
+            viewer.imageryLayers.addImageryProvider(labelLayer);
 
             const d2r = Cesium.Math.toRadians;
             const pt = (lon: number, lat: number, h = 50) =>
@@ -55,10 +71,10 @@ export default function ZhangQian() {
             const lineEntity = viewer.entities.add({
                 polyline: {
                     positions: new Cesium.CallbackProperty(() => pathPositions, false),
-                    width: 10,
+                    width: 20,
                     material: new Cesium.PolylineGlowMaterialProperty({
-                        glowPower: 0.5,
-                        taperPower: 0.6,
+                        glowPower: 1,
+                        taperPower: 1,
                         color: Cesium.Color.ORANGE,
                     }),
                     clampToGround: true,
@@ -66,14 +82,14 @@ export default function ZhangQian() {
             });
 
             // ======================
-            // 立方体（始终存在）
+            // head（始终存在）
             // ======================
+            let currentTravelerPos = pt(points[0].lon, points[0].lat);
             const traveler = viewer.entities.add({
-                position: pt(points[0].lon, points[0].lat),
-                box: {
-                    dimensions: new Cesium.Cartesian3(50000, 50000, 50000),
-                    material: Cesium.Color.CYAN,
-                    outline: true,
+                position: new Cesium.CallbackProperty(() => currentTravelerPos, false),
+                ellipsoid: {
+                    radii: new Cesium.Cartesian3(10000, 10000, 10000),
+                    material: Cesium.Color.RED,
                 }
             });
 
@@ -96,8 +112,16 @@ export default function ZhangQian() {
             // ======================
             const fly = (i: number) => {
                 if (destroyed || i >= points.length) {
-                    // ✅ 动画结束 → 自动缩放全路径
-                    viewer.zoomTo(lineEntity, new Cesium.HeadingPitchRange(0, d2r(-60)));
+                    // ✅ 动画结束 → 平滑飞行到全路径视角
+                    const allPositions = points.map(p => pt(p.lon, p.lat));
+                    const boundingSphere = Cesium.BoundingSphere.fromPoints(allPositions);
+                    // 扩大一些，留出边距
+                    boundingSphere.radius *= 1.6;
+                    viewer.camera.flyToBoundingSphere(boundingSphere, {
+                        duration: 3.0,
+                        offset: new Cesium.HeadingPitchRange(0, d2r(-50), 0),
+                        easingFunction: Cesium.EasingFunction.CUBIC_IN_OUT,
+                    });
                     return;
                 }
 
@@ -131,8 +155,8 @@ export default function ZhangQian() {
                     // ✅ 路径延伸
                     pathPositions = [...base, pos];
 
-                    // ✅ 立方体始终在最前端（引领）
-                    traveler.position = pos;
+                    // ✅ 小球始终在最前端（引领）
+                    currentTravelerPos = pos;
 
                     // 朝向
                     const heading = Math.atan2(
@@ -140,11 +164,11 @@ export default function ZhangQian() {
                         cur.lat - prev.lat
                     );
 
-                    traveler.orientation =
-                        Cesium.Transforms.headingPitchRollQuaternion(
-                            pos,
-                            new Cesium.HeadingPitchRoll(heading, 0, 0)
-                        );
+                    // traveler.orientation =
+                    //     Cesium.Transforms.headingPitchRollQuaternion(
+                    //         pos,
+                    //         new Cesium.HeadingPitchRoll(heading, 0, 0)
+                    //     );
 
                     // 相机跟随
                     viewer.camera.lookAt(
